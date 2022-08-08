@@ -7,9 +7,12 @@ import express from 'express';
 import http from 'http';
 import typeDefs from './typeDefs';
 import resolvers from './resolvers';
+import db from './config/db';
+require('dotenv').config()
 
 async function startApolloServer() {
   const app = express();
+  db()
   const httpServer = http.createServer(app);
   const server = new ApolloServer({
     typeDefs,
