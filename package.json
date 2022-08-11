@@ -1,6 +1,6 @@
 {
   "name": "fullstack-apollo-graphql",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Here I will try to build a application using apollo graphql and apollo graphql client with typescript node.js express.js and react.js.",
   "main": "index.js",
   "scripts": {
