@@ -2,7 +2,7 @@ export const AuthorTypes = `
   type Author {
     id: ID!
     name: String!
-    books: [Book]
+    books(id: ID): [Book]
   }
 
   input addAuthorInput {
