@@ -22,6 +22,7 @@
   "author": "Hossain Sahriar Kabir",
   "license": "ISC",
   "devDependencies": {
+    "@types/jsonwebtoken": "^8.5.8",
     "@types/mongoose": "^5.11.97",
     "@types/validator": "^13.7.5",
     "dotenv": "^16.0.1",
@@ -32,8 +33,10 @@
   "dependencies": {
     "apollo-server-core": "^3.10.0",
     "apollo-server-express": "^3.10.0",
+    "bcryptjs": "^2.4.3",
     "express": "^4.18.1",
     "graphql": "^16.5.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.5.1",
     "validator": "^13.7.0"
   }
