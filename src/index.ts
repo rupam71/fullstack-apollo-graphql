@@ -4,9 +4,10 @@ import {
   ApolloServerPluginDrainHttpServer,
   ApolloServerPluginLandingPageLocalDefault,
 } from 'apollo-server-core';
-import express from 'express';
+import express, { request } from 'express';
 import http from 'http';
 import db from './config/db';
+import { getUser } from './utility/getUser';
 require('dotenv').config()
 
 async function startApolloServer() {
@@ -18,6 +19,12 @@ async function startApolloServer() {
     resolvers,
     csrfPrevention: true,
     cache: 'bounded',
+    context: async({req}) => {
+      const token = req.headers.authorization
+      const user = token ? await getUser(token) : null
+      let context = {user}
+      return context
+    },
     plugins: [
       ApolloServerPluginDrainHttpServer({ httpServer }),
       ApolloServerPluginLandingPageLocalDefault({ embed: true }),
