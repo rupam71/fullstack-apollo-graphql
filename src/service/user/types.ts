@@ -27,9 +27,16 @@ export const UserTypes = `
     user: User
   }
 
+  type UserAuthResponse {
+    statusCode: Int!
+    message: String!
+    token: String
+    user: User
+  }
+
   extend type Query {
     getAllUser: [User]
-    getProfileUser(email:String, password:String) :UserResponse 
+    getProfileUser(email:String, password:String) :UserAuthResponse 
     getUserById(id: ID!) :UserResponse
   }
   
