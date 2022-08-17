@@ -27,6 +27,12 @@ export const UserTypes = `
     user: User
   }
 
+  type AllUserResponse {
+    statusCode: Int!
+    message: String!
+    user: [User]
+  }
+
   type UserAuthResponse {
     statusCode: Int!
     message: String!
@@ -35,7 +41,7 @@ export const UserTypes = `
   }
 
   extend type Query {
-    getAllUser: [User]
+    getAllUser: AllUserResponse
     getProfileUser(email:String, password:String) :UserAuthResponse 
     getUserById(id: ID!) :UserResponse
   }
