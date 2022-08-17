@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import validator from "validator";
+import bcrypt from "bcryptjs"
 
 interface UserType {
   name: string
@@ -8,7 +9,7 @@ interface UserType {
   phone: string
 }
 
-const UserSchema = new mongoose.Schema(
+const UserSchema = new mongoose.Schema<UserType>(
   {
     name: {
       type: String,
@@ -51,6 +52,17 @@ const UserSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+UserSchema.pre('save', async function(next){
+  const user = this
+
+  if(user.isModified('password')){
+    const salt = await bcrypt.genSalt(10)
+    user.password = await bcrypt.hash(user.password, salt)
+  }
+
+  next()
+})
 
 const User = mongoose.model<UserType>("User", UserSchema);
 export default User;
