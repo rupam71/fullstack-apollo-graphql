@@ -26,8 +26,8 @@ export const AuthorTypes = `
   }
   extend type Query {
     getAuthors(id: ID): AuthorsResponse
-    getAllAuthors: [Author] # /api/authors
-    getAuthorById(id: ID!): Author # /api/authors/:id
+    getAllAuthors: AuthorsResponse            # /api/authors
+    getAuthorById(id: ID!): AuthorsResponse   # /api/authors/:id
   }
 
   extend type Mutation {
